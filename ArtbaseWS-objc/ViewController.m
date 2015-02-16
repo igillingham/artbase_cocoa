@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "TableController.h"
 #import "ABDatabase.h"
+#import "ABArtworks.h"
 
 @implementation ViewController
 
@@ -21,6 +22,8 @@
     // Do any additional setup after loading the view.
     [self.lblStatus setStringValue:@"init"];
     [self.currentArtworkId setStringValue:@"0"];
+    
+    self.artworkTableView.delegate = [[ABArtworks alloc] init];
     
     // Instantiate a single ArtworkEntity
     self.awEntity = [[ArtworkEntity alloc] init];

@@ -12,6 +12,8 @@
 @interface ViewController : NSViewController
 
 @property (weak) IBOutlet NSTableColumn *artworkId;
+@property (weak) IBOutlet NSTableView *artworkTableView;
+
 
 @property (weak) IBOutlet NSTextFieldCell *lblStatus;
 @property (retain, nonatomic) NSURLConnection *connection;
