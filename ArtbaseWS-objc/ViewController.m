@@ -11,9 +11,9 @@
 #import "ViewController.h"
 #import "TableController.h"
 #import "ABDatabase.h"
-#import "ABArtworks.h"
 
 @implementation ViewController
+
 
 - (void)viewDidLoad
     {
@@ -23,7 +23,8 @@
     [self.lblStatus setStringValue:@"init"];
     [self.currentArtworkId setStringValue:@"0"];
     
-    self.artworkTableView.delegate = [[ABArtworks alloc] init];
+    self.abArtworksDataSource = [[ABArtworks alloc] init];
+    self.artworkTableView.delegate = self.abArtworksDataSource;
     
     // Instantiate a single ArtworkEntity
     self.awEntity = [[ArtworkEntity alloc] init];
@@ -78,6 +79,41 @@
             TableController *tc = [TableController alloc];
             tc.tableArtworkName.stringValue = strName;
            }
+        else
+            {
+            //NSArray *notifications = [[theFeedString JSONValue] objectForKey:@"notification"];
+            // or whatever JSON helper you are using
+            inner_result = [results objectForKey:@"artworks"];
+            if (inner_result != nil)
+                {
+                NSLog(@"Found Artworks key");
+
+                for (NSDictionary *dict in inner_result)
+                    {
+                    NSInteger uid = [[dict objectForKey:@"id"] intValue];
+                    NSString *name = [dict objectForKey:@"name"];
+                    NSLog(@"Artwork: %ld   Name: %@", (long)uid, name);
+                    [self.abArtworksDataSource appendArtworkWithId:uid withName:name];
+                    
+                    // do something with uid and count
+                    }
+
+                
+                /*
+                UInt16 uiId;
+                uiId = [[inner_result objectForKey:@"id"] integerValue];
+                NSString *strName = (NSString *)[inner_result objectForKey:@"name"];
+                NSLog(@"uiId: %d   Name: %@", uiId, strName);
+                
+                [self.lblStatus setStringValue:strName];
+                //self.awEntity.id = uiId;
+                //self.awEntity.name = strName;
+                TableController *tc = [TableController alloc];
+                tc.tableArtworkName.stringValue = strName;
+                */
+                }
+
+            }
         }
     else
         {
@@ -93,6 +129,38 @@
     [super setRepresentedObject:representedObject];
 
     // Update the view, if already loaded.
+    }
+
+- (IBAction)btnGetAllArtworks:(id)sender
+    {
+    NSLog(@"Get All Artworks button pressed");
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/aw/names"]]];
+    
+    // Specify that it will be a GET request
+    request.HTTPMethod = @"GET";
+    
+    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    // If we want to consider posting JSON params at some stage
+    //NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:&encodeError];
+    
+    // Setting a timeout
+    request.timeoutInterval = 20.0;
+    
+    // This is how we set header fields
+    [request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    if (self.connection != nil)
+        {
+        [self.connection cancel];
+        }
+    
+    ArtbaseAPIClient *apicli = [ArtbaseAPIClient alloc];
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:apicli];
+    
     }
 
 - (IBAction)btnTestGetAction:(id)sender
@@ -136,12 +204,17 @@
 
     }
 
+- (IBAction)btnAddAction:(id)sender
+    {
+    NSLog(@"Add button pressed");
+    }
+
 - (IBAction)btnTestWebReq:(id)sender
     {
     }
 
 - (IBAction)btnTestPostAction:(id)sender
-{
+    {
     NSLog(@"POST button pressed");
     NSLog(@"buttonPressed: Setting up request");
     //soStatus.text = @"Pressed!";
@@ -211,7 +284,7 @@
             //self.greetingContent.text = [greeting objectForKey:@"content"];
             }
         }
-}
+    }
 
 
 

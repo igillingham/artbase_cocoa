@@ -10,17 +10,57 @@
 
 @implementation ABArtworks
 
+-(id)init
+    {
+    NSLog(@"ABArtworks init");
+    return [super init];
+    }
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
     {
-    return(1);
+    NSLog(@"ABArtworks numberOfRowsInTableView");
+    return([self.artworksArray count]);
     }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
     {
-    NSTableCellView *result = [tableView makeViewWithIdentifier:@"artworksIdCol" owner:self];
-    
-    // Set the stringValue of the cell's text field to the nameArray value at row
-    result.textField.stringValue = @"A value";
+    NSTableCellView *result;
+    NSLog(@"ABArtworks viewForTableColumn");
+    NSTableCellView *tableCellView = [tableView makeViewWithIdentifier:@"artworkTableView" owner:self];
+    if ([[tableColumn identifier] isEqualToString:@"artworkIdCol"])
+        {
+        NSLog(@"tableColumn = artworkIdCol");
+        [[tableCellView textField] setObjectValue:@"Artwork index"];
+        result = [tableView makeViewWithIdentifier:@"artworkIdCol" owner:self];
+        result.textField.stringValue = @"An artwork index";
+        }
+    else if ([[tableColumn identifier] isEqualToString:@"artworkName"])
+             {
+             NSLog(@"tableColumn = artworkName");
+             [[tableCellView textField] setObjectValue:@"Artwork name"];
+             result = [tableView makeViewWithIdentifier:@"artworkName" owner:self];
+             result.textField.stringValue = @"An artwork name";
+             }
+
     return result;
     }
+
+- (void)clear
+    {
+    [self setArtworksArray:[[NSMutableArray alloc] init]];
+    for (ArtworkEntity *awe in self.artworksArray)
+        {
+        if (awe != nil)
+            {
+            
+            }
+        }
+    }
+
+- (void)appendArtworkWithId:(UInt16)uid withName:(NSString *)name
+    {
+    ArtworkEntity *awe = [[ArtworkEntity alloc] initWithId:uid withName:name];
+    [self.artworksArray addObject:awe];
+    }
+
 @end

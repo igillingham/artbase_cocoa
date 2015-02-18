@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ArtworkEntity.h"
+#import "ABArtworks.h"
+
 
 @interface ViewController : NSViewController
 
@@ -19,10 +21,12 @@
 @property (retain, nonatomic) NSURLConnection *connection;
 
 @property (retain, nonatomic) ArtworkEntity *awEntity;
-
+@property (strong) IBOutlet ABArtworks *abArtworksDataSource;
+- (IBAction)btnAddAction:(id)sender;
 - (IBAction)btnTestPostAction:(id)sender;
 - (IBAction)btnTestGetAction:(id)sender;
 - (IBAction)stepSelector:(id)sender;
+- (IBAction)btnGetAllArtworks:(id)sender;
 @property (weak) IBOutlet NSStepper *stepArtworkId;
 @property (weak) IBOutlet NSTextField *currentArtworkId;
 

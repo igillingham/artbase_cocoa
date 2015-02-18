@@ -10,9 +10,13 @@
 #import <CoreData/CoreData.h>
 
 
-@interface ArtworkEntity : NSManagedObject
+@interface ArtworkEntity : NSObject
 
-@property (nonatomic) UInt16 id;
+@property (nonatomic) UInt16 index;
 @property (nonatomic, retain) NSString * name;
+
+-(id)init;
+-(id)initWithId:(UInt16)index
+               withName:(NSString *)name;
 
 @end

@@ -672,19 +672,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView identifier="artworkName" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wu-PK-AnS">
-                                <rect key="frame" x="20" y="110" width="240" height="135"/>
+                            <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="23" horizontalPageScroll="10" verticalLineScroll="23" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wu-PK-AnS">
+                                <rect key="frame" x="20" y="103" width="340" height="133"/>
                                 <clipView key="contentView" misplaced="YES" id="BcI-X4-4xD">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="bcK-C2-0ic" viewBased="YES" id="izq-Oo-Kcf">
+                                        <tableView identifier="artworkTableView" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="21" rowSizeStyle="automatic" headerView="bcK-C2-0ic" viewBased="YES" id="izq-Oo-Kcf" userLabel="Artwork Table View" colorLabel="IBBuiltInLabel-Blue">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="artworkId" width="116" minWidth="40" maxWidth="1000" id="7B3-U8-l3B">
+                                                <tableColumn identifier="artworkIdCol" width="116" minWidth="40" maxWidth="1000" id="7B3-U8-l3B">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -723,7 +724,7 @@
                                                         </binding>
                                                     </connections>
                                                 </tableColumn>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="0Gw-Or-v5B">
+                                                <tableColumn identifier="artworkName" width="216" minWidth="40" maxWidth="1000" id="0Gw-Or-v5B">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -737,7 +738,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="hsX-jG-rPR">
-                                                            <rect key="frame" x="1" y="1" width="116" height="21"/>
+                                                            <rect key="frame" x="120" y="1" width="216" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m8s-PQ-zgC">
@@ -832,14 +833,14 @@
                                 </buttonCell>
                             </button>
                             <stepper identifier="stepper" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9A-Qh-5S4">
-                                <rect key="frame" x="277" y="107" width="19" height="27"/>
+                                <rect key="frame" x="385" y="107" width="19" height="27"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" maxValue="500" id="KNp-kn-AhA"/>
                                 <connections>
                                     <action selector="stepSelector:" target="XfG-lQ-9wD" id="luj-ac-FYQ"/>
                                 </connections>
                             </stepper>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hw9-El-lXc">
-                                <rect key="frame" x="278" y="140" width="70" height="23"/>
+                                <rect key="frame" x="386" y="140" width="70" height="23"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Artwork ID" id="Djt-Ox-ugc">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -847,18 +848,27 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-UR-2zh">
-                                <rect key="frame" x="299" y="113" width="38" height="17"/>
+                                <rect key="frame" x="407" y="113" width="38" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="ENp-pM-9Ae">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button identifier="btnGetAllArtworks" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jFv-Nm-Mi9">
+                                <rect key="frame" x="14" y="13" width="140" height="32"/>
+                                <buttonCell key="cell" type="push" title="Get All Arwtorks" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AAP-Rf-LYc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="btnGetAllArtworks:" target="XfG-lQ-9wD" id="h7F-6F-HT3"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="artworkId" destination="0Gw-Or-v5B" id="bpX-SC-mUj"/>
-                        <outlet property="artworkTableView" destination="izq-Oo-Kcf" id="W8m-9t-iWb"/>
+                        <outlet property="artworkTableView" destination="izq-Oo-Kcf" id="bxC-io-R6e"/>
                         <outlet property="currentArtworkId" destination="ncj-UR-2zh" id="PG6-JW-tbN"/>
                         <outlet property="lblStatus" destination="Nmh-th-zaW" id="7NR-fW-D3L"/>
                         <outlet property="stepArtworkId" destination="X9A-Qh-5S4" id="CrS-2Y-ci6"/>
