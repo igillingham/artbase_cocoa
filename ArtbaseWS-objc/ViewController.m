@@ -14,6 +14,8 @@
 
 @implementation ViewController
 
+@synthesize artworkId;
+@synthesize abArtworksDataSource;
 
 - (void)viewDidLoad
     {
@@ -24,10 +26,10 @@
     [self.currentArtworkId setStringValue:@"0"];
     
     self.abArtworksDataSource = [[ABArtworks alloc] init];
-    self.artworkTableView.delegate = self.abArtworksDataSource;
-    
+    self.artworkTableView = [[NSTableView alloc] init];
+    [self.artworkTableView setDelegate:self.abArtworksDataSource];
+    [self.artworkTableView setDataSource:self.abArtworksDataSource];
     // Instantiate a single ArtworkEntity
-    self.awEntity = [[ArtworkEntity alloc] init];
     // Set the Artwork ID stepper control parameters
     [self.stepArtworkId setMinValue:0];
     [self.stepArtworkId setMaxValue:256];
@@ -74,8 +76,6 @@
             NSLog(@"uiId: %d   Name: %@", uiId, strName);
 
             [self.lblStatus setStringValue:strName];
-            //self.awEntity.id = uiId;
-            //self.awEntity.name = strName;
             TableController *tc = [TableController alloc];
             tc.tableArtworkName.stringValue = strName;
            }
@@ -97,7 +97,7 @@
                     
                     // do something with uid and count
                     }
-
+                [self.artworkTableView reloadData];
                 
                 /*
                 UInt16 uiId;
@@ -106,8 +106,6 @@
                 NSLog(@"uiId: %d   Name: %@", uiId, strName);
                 
                 [self.lblStatus setStringValue:strName];
-                //self.awEntity.id = uiId;
-                //self.awEntity.name = strName;
                 TableController *tc = [TableController alloc];
                 tc.tableArtworkName.stringValue = strName;
                 */

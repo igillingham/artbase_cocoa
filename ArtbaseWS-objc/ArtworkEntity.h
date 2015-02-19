@@ -12,7 +12,7 @@
 
 @interface ArtworkEntity : NSObject
 
-@property (nonatomic) UInt16 index;
+@property UInt16 index;
 @property (nonatomic, retain) NSString * name;
 
 -(id)init;

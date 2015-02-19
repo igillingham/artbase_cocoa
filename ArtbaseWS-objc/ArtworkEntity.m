@@ -9,14 +9,15 @@
 #import "ArtworkEntity.h"
 
 
-@implementation ArtworkEntity
+@implementation ArtworkEntity : NSObject
 
 @synthesize index;
 @synthesize name;
 
 -(id)init
     {
-    if( self = [super init] )
+    self = [super init];
+    if( self )
         {
         index = 0;
         name = @"---";
@@ -27,10 +28,12 @@
 -(id)initWithId:(UInt16)awIndex
            withName:(NSString *)awName
     {
-    if( self = [super init] )
+    self = [super init];
+    if( self )
         {
         index = awIndex;
         name = awName;
+        NSLog(@"ArtworkEntity init: %@", self);
         }
     return self;
     }

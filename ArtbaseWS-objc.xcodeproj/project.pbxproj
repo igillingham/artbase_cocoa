@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C38F48E1A91067E00825D15 /* ABArtworks.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C38F48D1A91067E00825D15 /* ABArtworks.m */; };
+		3C5FD5E31A7AC88600210292 /* TableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C5FD5E21A7AC88600210292 /* TableController.m */; };
 		3C8772F51A72A4B900A1EC91 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8772F41A72A4B900A1EC91 /* AppDelegate.m */; };
 		3C8772F71A72A4B900A1EC91 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8772F61A72A4B900A1EC91 /* main.m */; };
 		3C8772FA1A72A4B900A1EC91 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8772F91A72A4B900A1EC91 /* ViewController.m */; };
@@ -14,6 +16,10 @@
 		3C8772FF1A72A4B900A1EC91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C8772FE1A72A4B900A1EC91 /* Images.xcassets */; };
 		3C8773021A72A4B900A1EC91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C8773001A72A4B900A1EC91 /* Main.storyboard */; };
 		3C87730E1A72A4B900A1EC91 /* ArtbaseWS_objcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C87730D1A72A4B900A1EC91 /* ArtbaseWS_objcTests.m */; };
+		3C8773191A72C70F00A1EC91 /* ArtworkEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C8773181A72C70F00A1EC91 /* ArtworkEntity.m */; };
+		3CCACD861A7E7BBE00D5ACFE /* ABDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCACD851A7E7BBE00D5ACFE /* ABDatabase.m */; };
+		3CCF6D7D1A7BF36F002FD898 /* TestButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF6D7C1A7BF36F002FD898 /* TestButtonController.m */; };
+		9BF5E220C75856ED41EC00A7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D25CB2CAF0CDC8939346489 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +33,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		299B75F35C4073FD1CFB0774 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3C38F48C1A91067E00825D15 /* ABArtworks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABArtworks.h; sourceTree = "<group>"; };
+		3C38F48D1A91067E00825D15 /* ABArtworks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABArtworks.m; sourceTree = "<group>"; };
+		3C38F4911A91096200825D15 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = Playground/MyPlayground.playground; sourceTree = "<group>"; };
+		3C5FD5E11A7AC88600210292 /* TableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableController.h; sourceTree = "<group>"; };
+		3C5FD5E21A7AC88600210292 /* TableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableController.m; sourceTree = "<group>"; };
 		3C8772EE1A72A4B900A1EC91 /* ArtbaseWS-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ArtbaseWS-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C8772F21A72A4B900A1EC91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C8772F31A72A4B900A1EC91 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,6 +52,14 @@
 		3C8773071A72A4B900A1EC91 /* ArtbaseWS-objcTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ArtbaseWS-objcTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C87730C1A72A4B900A1EC91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C87730D1A72A4B900A1EC91 /* ArtbaseWS_objcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArtbaseWS_objcTests.m; sourceTree = "<group>"; };
+		3C8773171A72C70F00A1EC91 /* ArtworkEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtworkEntity.h; sourceTree = "<group>"; };
+		3C8773181A72C70F00A1EC91 /* ArtworkEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtworkEntity.m; sourceTree = "<group>"; };
+		3CCACD841A7E7BBE00D5ACFE /* ABDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABDatabase.h; sourceTree = "<group>"; };
+		3CCACD851A7E7BBE00D5ACFE /* ABDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABDatabase.m; sourceTree = "<group>"; };
+		3CCF6D7B1A7BF36F002FD898 /* TestButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestButtonController.h; sourceTree = "<group>"; };
+		3CCF6D7C1A7BF36F002FD898 /* TestButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestButtonController.m; sourceTree = "<group>"; };
+		6D25CB2CAF0CDC8939346489 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		85DE0062462933F3B4AE504D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BF5E220C75856ED41EC00A7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +81,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0621E94FF005CB9065F2413A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				299B75F35C4073FD1CFB0774 /* Pods.debug.xcconfig */,
+				85DE0062462933F3B4AE504D /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3C38F4901A91092D00825D15 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				3C38F4911A91096200825D15 /* MyPlayground.playground */,
+			);
+			name = Playground;
+			sourceTree = "<group>";
+		};
 		3C8772E51A72A4B900A1EC91 = {
 			isa = PBXGroup;
 			children = (
+				3C38F4901A91092D00825D15 /* Playground */,
 				3C8772F01A72A4B900A1EC91 /* ArtbaseWS-objc */,
 				3C87730A1A72A4B900A1EC91 /* ArtbaseWS-objcTests */,
 				3C8772EF1A72A4B900A1EC91 /* Products */,
+				0621E94FF005CB9065F2413A /* Pods */,
+				CD02FB97CCCFF718A72B3359 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,12 +123,22 @@
 			isa = PBXGroup;
 			children = (
 				3C8772F31A72A4B900A1EC91 /* AppDelegate.h */,
+				3C5FD5E11A7AC88600210292 /* TableController.h */,
+				3C5FD5E21A7AC88600210292 /* TableController.m */,
 				3C8772F41A72A4B900A1EC91 /* AppDelegate.m */,
 				3C8772F81A72A4B900A1EC91 /* ViewController.h */,
 				3C8772F91A72A4B900A1EC91 /* ViewController.m */,
+				3C38F48C1A91067E00825D15 /* ABArtworks.h */,
+				3C38F48D1A91067E00825D15 /* ABArtworks.m */,
 				3C8772FE1A72A4B900A1EC91 /* Images.xcassets */,
 				3C8773001A72A4B900A1EC91 /* Main.storyboard */,
+				3CCACD841A7E7BBE00D5ACFE /* ABDatabase.h */,
+				3CCACD851A7E7BBE00D5ACFE /* ABDatabase.m */,
+				3CCF6D7B1A7BF36F002FD898 /* TestButtonController.h */,
+				3CCF6D7C1A7BF36F002FD898 /* TestButtonController.m */,
 				3C8772FB1A72A4B900A1EC91 /* ArtbaseWS_objc.xcdatamodeld */,
+				3C8773171A72C70F00A1EC91 /* ArtworkEntity.h */,
+				3C8773181A72C70F00A1EC91 /* ArtworkEntity.m */,
 				3C8772F11A72A4B900A1EC91 /* Supporting Files */,
 			);
 			path = "ArtbaseWS-objc";
@@ -119,6 +170,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CD02FB97CCCFF718A72B3359 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D25CB2CAF0CDC8939346489 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C8773111A72A4B900A1EC91 /* Build configuration list for PBXNativeTarget "ArtbaseWS-objc" */;
 			buildPhases = (
+				2440DE9F8CFDD9142E807555 /* Check Pods Manifest.lock */,
 				3C8772EA1A72A4B900A1EC91 /* Sources */,
 				3C8772EB1A72A4B900A1EC91 /* Frameworks */,
 				3C8772EC1A72A4B900A1EC91 /* Resources */,
+				A446ED82AA49E5D710C8ABD8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,15 +274,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2440DE9F8CFDD9142E807555 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A446ED82AA49E5D710C8ABD8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3C8772EA1A72A4B900A1EC91 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CCF6D7D1A7BF36F002FD898 /* TestButtonController.m in Sources */,
+				3C5FD5E31A7AC88600210292 /* TableController.m in Sources */,
 				3C8772FD1A72A4B900A1EC91 /* ArtbaseWS_objc.xcdatamodeld in Sources */,
+				3C8773191A72C70F00A1EC91 /* ArtworkEntity.m in Sources */,
 				3C8772FA1A72A4B900A1EC91 /* ViewController.m in Sources */,
+				3C38F48E1A91067E00825D15 /* ABArtworks.m in Sources */,
 				3C8772F71A72A4B900A1EC91 /* main.m in Sources */,
 				3C8772F51A72A4B900A1EC91 /* AppDelegate.m in Sources */,
+				3CCACD861A7E7BBE00D5ACFE /* ABDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +432,7 @@
 		};
 		3C8773121A72A4B900A1EC91 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 299B75F35C4073FD1CFB0774 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -344,6 +444,7 @@
 		};
 		3C8773131A72A4B900A1EC91 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85DE0062462933F3B4AE504D /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -408,6 +509,7 @@
 				3C8773131A72A4B900A1EC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3C8773141A72A4B900A1EC91 /* Build configuration list for PBXNativeTarget "ArtbaseWS-objcTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +518,7 @@
 				3C8773161A72A4B900A1EC91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

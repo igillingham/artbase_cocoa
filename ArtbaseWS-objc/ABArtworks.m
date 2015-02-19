@@ -13,12 +13,14 @@
 -(id)init
     {
     NSLog(@"ABArtworks init");
+    // Allocate artworks array and initialise
+    [self clear];
     return [super init];
     }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
     {
-    NSLog(@"ABArtworks numberOfRowsInTableView");
+    NSLog(@"ABArtworks numberOfRowsInTableView %lu", (unsigned long)[self.artworksArray count]);
     return([self.artworksArray count]);
     }
 
@@ -26,23 +28,48 @@
     {
     NSTableCellView *result;
     NSLog(@"ABArtworks viewForTableColumn");
-    NSTableCellView *tableCellView = [tableView makeViewWithIdentifier:@"artworkTableView" owner:self];
-    if ([[tableColumn identifier] isEqualToString:@"artworkIdCol"])
+    if ([self.artworksArray count] > row)
         {
-        NSLog(@"tableColumn = artworkIdCol");
-        [[tableCellView textField] setObjectValue:@"Artwork index"];
-        result = [tableView makeViewWithIdentifier:@"artworkIdCol" owner:self];
-        result.textField.stringValue = @"An artwork index";
+        NSTableCellView *tableCellView = [tableView makeViewWithIdentifier:@"artworkTableView" owner:self];
+        if ([[tableColumn identifier] isEqualToString:@"artworkIdCol"])
+            {
+            NSLog(@"tableColumn = artworkIdCol");
+            [[tableCellView textField] setObjectValue:@"Artwork index"];
+            result = [tableView makeViewWithIdentifier:@"artworkIdCol" owner:self];
+            result.textField.integerValue = [(ArtworkEntity *)[self.artworksArray objectAtIndex:row] index];
+            }
+        else if ([[tableColumn identifier] isEqualToString:@"artworkName"])
+            {
+            NSLog(@"tableColumn = artworkName");
+            [[tableCellView textField] setObjectValue:@"Artwork name"];
+            result = [tableView makeViewWithIdentifier:@"artworkName" owner:self];
+            result.textField.stringValue = [(ArtworkEntity *)[self.artworksArray objectAtIndex:row] name];
+            }
         }
-    else if ([[tableColumn identifier] isEqualToString:@"artworkName"])
-             {
-             NSLog(@"tableColumn = artworkName");
-             [[tableCellView textField] setObjectValue:@"Artwork name"];
-             result = [tableView makeViewWithIdentifier:@"artworkName" owner:self];
-             result.textField.stringValue = @"An artwork name";
-             }
-
     return result;
+    }
+
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
+    {
+    id returnValue=nil;
+    ArtworkEntity *awe = (ArtworkEntity *)[self.artworksArray objectAtIndex:rowIndex];
+    NSLog(@"ABArtworks: tableView.objectValueForTableColumn.row");
+    if (awe != nil)
+        {
+        if ([[aTableColumn identifier] isEqualToString:@"artworkIdCol"])
+            returnValue = [[NSString alloc] initWithFormat:@"%d",[awe index]];
+        else if ([[aTableColumn identifier] isEqualToString:@"artworkName"])
+            returnValue = [awe name];
+        }
+    return aTableView;
+    }
+
+- (void)tableView:(NSTableView *)aTableView
+   setObjectValue:(id)anObject
+   forTableColumn:(NSTableColumn *)aTableColumn
+              row:(NSInteger)rowIndex
+    {
+    
     }
 
 - (void)clear
@@ -61,6 +88,7 @@
     {
     ArtworkEntity *awe = [[ArtworkEntity alloc] initWithId:uid withName:name];
     [self.artworksArray addObject:awe];
+    NSLog(@"ABArtworks appendArtworkWithId %@   %lu  count = %lu", awe, (unsigned long)uid, (unsigned long)[self.artworksArray count]);
     }
 
 @end

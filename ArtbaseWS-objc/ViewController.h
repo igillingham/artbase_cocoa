@@ -13,15 +13,17 @@
 
 @interface ViewController : NSViewController
 
+//IBOutlet NSTableView *artworkTableView;
+
 @property (weak) IBOutlet NSTableColumn *artworkId;
-@property (weak) IBOutlet NSTableView *artworkTableView;
+@property (nonatomic,retain) IBOutlet NSTableView *artworkTableView;
 
 
 @property (weak) IBOutlet NSTextFieldCell *lblStatus;
 @property (retain, nonatomic) NSURLConnection *connection;
 
 @property (retain, nonatomic) ArtworkEntity *awEntity;
-@property (strong) IBOutlet ABArtworks *abArtworksDataSource;
+@property (nonatomic, retain) IBOutlet ABArtworks *abArtworksDataSource;
 - (IBAction)btnAddAction:(id)sender;
 - (IBAction)btnTestPostAction:(id)sender;
 - (IBAction)btnTestGetAction:(id)sender;
