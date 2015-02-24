@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "ArtworkEntity.h"
 
-@interface ABArtworks : NSViewController<NSTableViewDataSource, NSTableViewDelegate>
-
+@interface ABArtworks : NSObject<NSTableViewDataSource, NSTableViewDelegate>
+    {
+    IBOutlet NSView *tableViewPlaceholderView;
+    }
+@property (assign) IBOutlet NSWindow *window;
 @property (strong, nonatomic) IBOutlet NSTableView *detailTableView;
-@property (strong) NSMutableArray *artworksArray;
+@property (strong,retain) NSMutableArray *artworksArray;
 
+/*
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
@@ -24,7 +28,7 @@
    setObjectValue:(id)anObject
    forTableColumn:(NSTableColumn *)aTableColumn
               row:(NSInteger)rowIndex;
-
+*/
 - (void)appendArtworkWithId:(UInt16)uid withName:(NSString *)name;
 
 - (void)clear;

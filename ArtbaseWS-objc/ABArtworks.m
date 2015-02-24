@@ -12,16 +12,18 @@
 
 -(id)init
     {
+    self = [super init];
     NSLog(@"ABArtworks init");
     // Allocate artworks array and initialise
     [self clear];
-    return [super init];
+    return self;
     }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
     {
-    NSLog(@"ABArtworks numberOfRowsInTableView %lu", (unsigned long)[self.artworksArray count]);
-    return([self.artworksArray count]);
+    NSInteger uiCount = (NSInteger)[_artworksArray count];
+    NSLog(@"ABArtworks numberOfRowsInTableView %lu", (unsigned long)uiCount);
+    return uiCount;
     }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -31,11 +33,11 @@
     if ([self.artworksArray count] > row)
         {
         NSTableCellView *tableCellView = [tableView makeViewWithIdentifier:@"artworkTableView" owner:self];
-        if ([[tableColumn identifier] isEqualToString:@"artworkIdCol"])
+        if ([[tableColumn identifier] isEqualToString:@"artworkId"])
             {
             NSLog(@"tableColumn = artworkIdCol");
             [[tableCellView textField] setObjectValue:@"Artwork index"];
-            result = [tableView makeViewWithIdentifier:@"artworkIdCol" owner:self];
+            result = [tableView makeViewWithIdentifier:@"artworkId" owner:self];
             result.textField.integerValue = [(ArtworkEntity *)[self.artworksArray objectAtIndex:row] index];
             }
         else if ([[tableColumn identifier] isEqualToString:@"artworkName"])
@@ -56,12 +58,12 @@
     NSLog(@"ABArtworks: tableView.objectValueForTableColumn.row");
     if (awe != nil)
         {
-        if ([[aTableColumn identifier] isEqualToString:@"artworkIdCol"])
+        if ([[aTableColumn identifier] isEqualToString:@"artworkId"])
             returnValue = [[NSString alloc] initWithFormat:@"%d",[awe index]];
         else if ([[aTableColumn identifier] isEqualToString:@"artworkName"])
             returnValue = [awe name];
         }
-    return aTableView;
+    return returnValue;
     }
 
 - (void)tableView:(NSTableView *)aTableView
@@ -69,11 +71,18 @@
    forTableColumn:(NSTableColumn *)aTableColumn
               row:(NSInteger)rowIndex
     {
-    
+    NSLog(@"ABArtworks: tableView.setObjectValue.forTableColumn");
+    }
+
+- (void)tableView:(NSTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+    {
+    NSLog(@"ABArtworks: tableView.didSelectRowAtIndexPath");
     }
 
 - (void)clear
     {
+    NSLog(@"ABArtworks clear called");
     [self setArtworksArray:[[NSMutableArray alloc] init]];
     for (ArtworkEntity *awe in self.artworksArray)
         {
@@ -88,7 +97,7 @@
     {
     ArtworkEntity *awe = [[ArtworkEntity alloc] initWithId:uid withName:name];
     [self.artworksArray addObject:awe];
-    NSLog(@"ABArtworks appendArtworkWithId %@   %lu  count = %lu", awe, (unsigned long)uid, (unsigned long)[self.artworksArray count]);
+    //NSLog(@"ABArtworks appendArtworkWithId %@   %lu  count = %lu", awe, (unsigned long)uid, (unsigned long)[self.artworksArray count]);
     }
 
 @end

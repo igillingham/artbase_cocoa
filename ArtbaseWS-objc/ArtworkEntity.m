@@ -33,7 +33,6 @@
         {
         index = awIndex;
         name = awName;
-        NSLog(@"ArtworkEntity init: %@", self);
         }
     return self;
     }

@@ -17,6 +17,7 @@
 @synthesize artworkId;
 @synthesize abArtworksDataSource;
 
+
 - (void)viewDidLoad
     {
     [super viewDidLoad];
@@ -24,11 +25,12 @@
     // Do any additional setup after loading the view.
     [self.lblStatus setStringValue:@"init"];
     [self.currentArtworkId setStringValue:@"0"];
-    
+
     self.abArtworksDataSource = [[ABArtworks alloc] init];
-    self.artworkTableView = [[NSTableView alloc] init];
+    //self.artworkTableView = [[NSTableView alloc] init];
     [self.artworkTableView setDelegate:self.abArtworksDataSource];
     [self.artworkTableView setDataSource:self.abArtworksDataSource];
+    
     // Instantiate a single ArtworkEntity
     // Set the Artwork ID stepper control parameters
     [self.stepArtworkId setMinValue:0];
@@ -47,7 +49,7 @@
     NSMutableData *requestedData = [[notification object] getResponseData];
     NSString *requestedDataString = [[notification object] getResponseString];
     NSLog(@"ViewController received notification downloadFinished. requestedData = %@", requestedDataString);
-    [_lblStatus setStringValue:requestedDataString];
+    //[_lblStatus setStringValue:requestedDataString];
     
     NSError *error = nil;
     id object = [NSJSONSerialization
@@ -63,8 +65,8 @@
     if([object isKindOfClass:[NSDictionary class]])
         {
         NSMutableDictionary *results = object;
-        NSLog(@"JSON decoded: %@", results );
-        NSLog(@"All keys: %@", [results allKeys]);
+        //NSLog(@"JSON decoded: %@", results );
+        //NSLog(@"All keys: %@", [results allKeys]);
         
         NSDictionary *inner_result = [results objectForKey:@"artwork"];
         if (inner_result != nil)
@@ -73,7 +75,7 @@
             UInt16 uiId;
             uiId = [[inner_result objectForKey:@"id"] integerValue];
             NSString *strName = (NSString *)[inner_result objectForKey:@"name"];
-            NSLog(@"uiId: %d   Name: %@", uiId, strName);
+            //NSLog(@"uiId: %d   Name: %@", uiId, strName);
 
             [self.lblStatus setStringValue:strName];
             TableController *tc = [TableController alloc];
@@ -87,28 +89,16 @@
             if (inner_result != nil)
                 {
                 NSLog(@"Found Artworks key");
-
+                // Clear any previous list entries
+                [self.abArtworksDataSource clear];
                 for (NSDictionary *dict in inner_result)
                     {
                     NSInteger uid = [[dict objectForKey:@"id"] intValue];
                     NSString *name = [dict objectForKey:@"name"];
-                    NSLog(@"Artwork: %ld   Name: %@", (long)uid, name);
                     [self.abArtworksDataSource appendArtworkWithId:uid withName:name];
-                    
-                    // do something with uid and count
                     }
                 [self.artworkTableView reloadData];
                 
-                /*
-                UInt16 uiId;
-                uiId = [[inner_result objectForKey:@"id"] integerValue];
-                NSString *strName = (NSString *)[inner_result objectForKey:@"name"];
-                NSLog(@"uiId: %d   Name: %@", uiId, strName);
-                
-                [self.lblStatus setStringValue:strName];
-                TableController *tc = [TableController alloc];
-                tc.tableArtworkName.stringValue = strName;
-                */
                 }
 
             }

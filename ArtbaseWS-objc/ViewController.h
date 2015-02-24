@@ -23,7 +23,8 @@
 @property (retain, nonatomic) NSURLConnection *connection;
 
 @property (retain, nonatomic) ArtworkEntity *awEntity;
-@property (nonatomic, retain) IBOutlet ABArtworks *abArtworksDataSource;
+@property (retain) IBOutlet ABArtworks *abArtworksDataSource;
+
 - (IBAction)btnAddAction:(id)sender;
 - (IBAction)btnTestPostAction:(id)sender;
 - (IBAction)btnTestGetAction:(id)sender;
@@ -34,5 +35,8 @@
 
 - (IBAction)btnTestWebReq:(id)sender;
 - (void)downloadFinished:(NSNotification *)notification;
+@property (weak) IBOutlet NSTableColumn *artworksIdTableColumn;
+@property (weak) IBOutlet NSTableColumn *artworksNameTableColumn;
+
 
 @end
