@@ -26,7 +26,10 @@
     [self.lblStatus setStringValue:@"init"];
     [self.currentArtworkId setStringValue:@"0"];
 
+    self.apiClient = [[ArtbaseAPIClient alloc] init];
+    
     self.abArtworksDataSource = [[ABArtworks alloc] init];
+    [self.abArtworksDataSource setParent:self];
     //self.artworkTableView = [[NSTableView alloc] init];
     [self.artworkTableView setDelegate:self.abArtworksDataSource];
     [self.artworkTableView setDataSource:self.abArtworksDataSource];
@@ -37,79 +40,44 @@
     [self.stepArtworkId setMaxValue:256];
     [self.stepArtworkId setIncrement:1];
 
-    // Receive notification messages
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(downloadFinished:)
-                                                 name:abApiNotifyDataReady
+                                             selector:@selector(updateArtworks:)
+                                                 name:abApiNotifyArtworksReady
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateArtworkItem:)
+                                                 name:abApiNotifyArtworkReady
                                                object:nil];
     }
 
-- (void)downloadFinished:(NSNotification *)notification
+- (IBAction)rowAnythingChangeSelected:(id)sender
     {
-    NSMutableData *requestedData = [[notification object] getResponseData];
-    NSString *requestedDataString = [[notification object] getResponseString];
-    NSLog(@"ViewController received notification downloadFinished. requestedData = %@", requestedDataString);
-    //[_lblStatus setStringValue:requestedDataString];
-    
-    NSError *error = nil;
-    id object = [NSJSONSerialization
-                 JSONObjectWithData:requestedData
-                 options:0
-                 error:&error];
-    
-    if(error) { /* JSON was malformed, act appropriately here */ }
-    
-    // the originating poster wants to deal with dictionaries;
-    // assuming you do too then something like this is the first
-    // validation step:
-    if([object isKindOfClass:[NSDictionary class]])
-        {
-        NSMutableDictionary *results = object;
-        //NSLog(@"JSON decoded: %@", results );
-        //NSLog(@"All keys: %@", [results allKeys]);
-        
-        NSDictionary *inner_result = [results objectForKey:@"artwork"];
-        if (inner_result != nil)
-            {
-            NSLog(@"Found Artwork key");
-            UInt16 uiId;
-            uiId = [[inner_result objectForKey:@"id"] integerValue];
-            NSString *strName = (NSString *)[inner_result objectForKey:@"name"];
-            //NSLog(@"uiId: %d   Name: %@", uiId, strName);
+    NSInteger iRow = [self.artworkTableView selectedRow];
+    NSLog(@"ViewController: rowChangeSelected row = %ld", iRow);
+    ArtworkEntity *pArtwork = [self.abArtworksDataSource getArtworkAtIndex:iRow];
+    NSString *name = [pArtwork name];
+    NSInteger index = [pArtwork index];
+    [self.apiClient requestArtworkWithId:index];
+    [self.detailsName setStringValue:name];
+    }
 
-            [self.lblStatus setStringValue:strName];
-            TableController *tc = [TableController alloc];
-            tc.tableArtworkName.stringValue = strName;
-           }
-        else
-            {
-            //NSArray *notifications = [[theFeedString JSONValue] objectForKey:@"notification"];
-            // or whatever JSON helper you are using
-            inner_result = [results objectForKey:@"artworks"];
-            if (inner_result != nil)
-                {
-                NSLog(@"Found Artworks key");
-                // Clear any previous list entries
-                [self.abArtworksDataSource clear];
-                for (NSDictionary *dict in inner_result)
-                    {
-                    NSInteger uid = [[dict objectForKey:@"id"] intValue];
-                    NSString *name = [dict objectForKey:@"name"];
-                    [self.abArtworksDataSource appendArtworkWithId:uid withName:name];
-                    }
-                [self.artworkTableView reloadData];
-                
-                }
+- (void)updateArtworks:(NSNotification *)notification
+    {
+    [self reloadData];
+    }
 
-            }
-        }
-    else
-        {
-        /* there's no guarantee that the outermost object in a JSON
-         packet will be a dictionary; if we get here then it wasn't,
-         so 'object' shouldn't be treated as an NSDictionary; probably
-         you need to report a suitable error condition */
-        }
+- (void)updateArtworkItem:(NSNotification *)notification
+    {
+    NSInteger medium;
+    ArtworkEntity *aw = (ArtworkEntity *)[notification object];
+    medium = [aw medium];
+    [self.detailsMedium setIntegerValue:medium];
+    [self reloadData];
+    }
+
+- (void)reloadData
+    {
+    [self.artworkTableView reloadData];
     }
 
 - (void)setRepresentedObject:(id)representedObject
@@ -121,68 +89,12 @@
 
 - (IBAction)btnGetAllArtworks:(id)sender
     {
-    NSLog(@"Get All Artworks button pressed");
-    // Create the request.
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/aw/names"]]];
-    
-    // Specify that it will be a GET request
-    request.HTTPMethod = @"GET";
-    
-    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    // If we want to consider posting JSON params at some stage
-    //NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:&encodeError];
-    
-    // Setting a timeout
-    request.timeoutInterval = 20.0;
-    
-    // This is how we set header fields
-    [request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    if (self.connection != nil)
-        {
-        [self.connection cancel];
-        }
-    
-    ArtbaseAPIClient *apicli = [ArtbaseAPIClient alloc];
-    // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:apicli];
-    
+    [self.apiClient requestAllArtworks];
     }
 
 - (IBAction)btnTestGetAction:(id)sender
     {
-    NSLog(@"Test button pressed");
-    NSLog(@"buttonPressed: Setting up request");
-    //soStatus.text = @"Pressed!";
-    // Create the request.
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/aw/name/%d",self.stepArtworkId.intValue]]];
-    
-    // Specify that it will be a GET request
-    request.HTTPMethod = @"GET";
-    
-    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    // If we want to consider posting JSON params at some stage
-    //NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:&encodeError];
-    
-    // Setting a timeout
-    request.timeoutInterval = 20.0;
-    
-    // This is how we set header fields
-    [request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    if (self.connection != nil)
-        {
-        [self.connection cancel];
-        }
-    
-    ArtbaseAPIClient *apicli = [ArtbaseAPIClient alloc];
-    // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:apicli];
-    
+    [self.apiClient requestArtworkWithId:[self.currentArtworkId integerValue]];
     }
 
 - (IBAction)stepSelector:(id)sender
@@ -241,10 +153,9 @@
         [self.connection cancel];
         }
     
-    ArtbaseAPIClient *apicli = [ArtbaseAPIClient alloc];
     // Create url connection and fire request
     // NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:apicli];
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self.apiClient];
     
     self.connection = conn;
     
@@ -254,13 +165,13 @@
     if (conn!=nil)
         {
         NSString* myString;
-        myString = apicli.getResponseString;
+        myString = self.apiClient.getResponseString;
         //[self.lblStatus] text
         NSLog(@"buttonPressed: Request completed");
         NSLog(@"%@", myString);
         
-        NSMutableData *data = apicli.getResponseData;
-        NSError *err = apicli.getError;
+        NSMutableData *data = self.apiClient.getResponseData;
+        NSError *err = self.apiClient.getError;
         
         if (data.length > 0 && err == nil)
             {
@@ -273,6 +184,7 @@
             }
         }
     }
+
 
 
 

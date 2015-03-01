@@ -7,6 +7,8 @@
 //
 
 #import "ABArtworks.h"
+#import "ABDatabase.h"
+
 
 @implementation ABArtworks
 
@@ -14,8 +16,22 @@
     {
     self = [super init];
     NSLog(@"ABArtworks init");
+    // Indicate no parent until it has been assigned later by a parent
+    self.parent = nil;
     // Allocate artworks array and initialise
+    [self setArtworksArray:[[NSMutableArray alloc] init]];
+    [self setArtworkItem:[[ArtworkEntity alloc] init]];
     [self clear];
+    // Receive notification messages
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(dataReady:)
+                                                 name:abApiNotifyArtworksJSONReady
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(artworkJSONReady:)
+                                                 name:abApiNotifyArtworkJSONReady
+                                               object:nil];
+
     return self;
     }
 
@@ -80,10 +96,17 @@
     NSLog(@"ABArtworks: tableView.didSelectRowAtIndexPath");
     }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification
+    {
+    NSTableView *tbv = [aNotification object];
+    NSInteger iRow = [tbv selectedRow];
+    NSLog(@"ABArtworks:tableViewSelectionDidChange row %ld", iRow);
+    }
+
 - (void)clear
     {
     NSLog(@"ABArtworks clear called");
-    [self setArtworksArray:[[NSMutableArray alloc] init]];
+    
     for (ArtworkEntity *awe in self.artworksArray)
         {
         if (awe != nil)
@@ -91,6 +114,7 @@
             
             }
         }
+    NSLog(@"ABArtworks clear exiting");
     }
 
 - (void)appendArtworkWithId:(UInt16)uid withName:(NSString *)name
@@ -99,5 +123,57 @@
     [self.artworksArray addObject:awe];
     //NSLog(@"ABArtworks appendArtworkWithId %@   %lu  count = %lu", awe, (unsigned long)uid, (unsigned long)[self.artworksArray count]);
     }
+
+- (ArtworkEntity *)getArtworkAtIndex:(UInt16)iIndex
+    {
+    ArtworkEntity *pArtwork = nil;
+    pArtwork = (ArtworkEntity *)[self.artworksArray objectAtIndex:iIndex];
+    return pArtwork;
+    }
+
+- (void)dataReady:(NSNotification *)notification
+{
+    NSLog(@"ABArtworks:dataReady");
+    // Clear any previous list entries
+    //cast obj to NSDictionary
+    NSDictionary *result = (NSDictionary *)notification.object;
+    
+    NSLog(@"ABArtworks:dataReady result = %@", result);
+    [self clear];
+    if (result != nil)
+        {
+        for (NSDictionary *dict in result)
+            {
+            NSInteger uid = [[dict objectForKey:@"id"] intValue];
+            NSString *name = [dict objectForKey:@"name"];
+            [self appendArtworkWithId:uid withName:name];
+            }
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:abApiNotifyArtworksReady
+         object:self];
+        
+        }
+}
+
+- (void)artworkJSONReady:(NSNotification *)notification
+{
+    NSLog(@"ABArtwork:artworkJSONReady");
+    //cast obj to NSDictionary
+    NSDictionary *result = (NSDictionary *)notification.object;
+    
+    if (result != nil)
+        {
+        NSInteger uid = [[result objectForKey:@"id"] intValue];
+        NSString *name = [result objectForKey:@"name"];
+        NSInteger medium = [[result objectForKey:@"medium"] integerValue];
+        [self.artworkItem setIndex:uid];
+        [self.artworkItem setName:name];
+        [self.artworkItem setMedium:medium];
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:abApiNotifyArtworkReady
+         object:self.artworkItem];
+        
+        }
+}
 
 @end

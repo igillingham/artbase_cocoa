@@ -14,6 +14,12 @@
 
 @property UInt16 index;
 @property (nonatomic, retain) NSString * name;
+@property NSInteger medium;
+@property (nonatomic, retain) NSString * presentLocation;
+@property (nonatomic, retain) NSString * originalDateOfSale;
+@property (nonatomic, retain) NSString * information;
+
+
 
 -(id)init;
 -(id)initWithId:(UInt16)index

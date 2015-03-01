@@ -669,11 +669,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="787" height="467"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField identifier="lblStatus" toolTip="Artwork status" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mty-0d-oD5">
-                                <rect key="frame" x="18" y="78" width="244" height="17"/>
+                                <rect key="frame" x="179" y="111" width="244" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Nmh-th-zaW">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -684,7 +684,7 @@
                                 </textFieldCell>
                             </textField>
                             <button identifier="btnTestWebReq" toolTip="Attempt HTTP POST" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vJg-Oo-SUg">
-                                <rect key="frame" x="339" y="42" width="121" height="32"/>
+                                <rect key="frame" x="339" y="68" width="121" height="32"/>
                                 <buttonCell key="cell" type="push" title="Test WebReq" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EWv-HJ-zej">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -694,7 +694,7 @@
                                 </connections>
                             </button>
                             <button identifier="btnTestGet" toolTip="Attempt HTTP GET" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJr-XQ-1AM">
-                                <rect key="frame" x="113" y="42" width="96" height="32"/>
+                                <rect key="frame" x="113" y="68" width="96" height="32"/>
                                 <buttonCell key="cell" type="push" title="Test GET" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sC6-Xk-VGu">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -704,7 +704,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qgp-FP-rav">
-                                <rect key="frame" x="14" y="42" width="66" height="32"/>
+                                <rect key="frame" x="14" y="68" width="66" height="32"/>
                                 <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KLY-6Q-9Hw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -714,7 +714,7 @@
                                 </connections>
                             </button>
                             <button identifier="btnTestPost" toolTip="Attempt HTTP POST" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nr9-xo-XXC">
-                                <rect key="frame" x="224" y="42" width="105" height="32"/>
+                                <rect key="frame" x="224" y="68" width="105" height="32"/>
                                 <buttonCell key="cell" type="push" title="Test POST" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LHd-I7-aT8">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -724,14 +724,14 @@
                                 </buttonCell>
                             </button>
                             <stepper identifier="stepper" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X9A-Qh-5S4">
-                                <rect key="frame" x="385" y="107" width="19" height="27"/>
+                                <rect key="frame" x="17" y="105" width="19" height="27"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" maxValue="500" id="KNp-kn-AhA"/>
                                 <connections>
                                     <action selector="stepSelector:" target="XfG-lQ-9wD" id="luj-ac-FYQ"/>
                                 </connections>
                             </stepper>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hw9-El-lXc">
-                                <rect key="frame" x="386" y="140" width="70" height="23"/>
+                                <rect key="frame" x="86" y="105" width="70" height="23"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Artwork ID" id="Djt-Ox-ugc">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -739,7 +739,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-UR-2zh">
-                                <rect key="frame" x="407" y="113" width="38" height="17"/>
+                                <rect key="frame" x="39" y="111" width="38" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="ENp-pM-9Ae">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -747,7 +747,7 @@
                                 </textFieldCell>
                             </textField>
                             <button identifier="btnGetAllArtworks" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jFv-Nm-Mi9">
-                                <rect key="frame" x="14" y="13" width="140" height="32"/>
+                                <rect key="frame" x="14" y="39" width="140" height="32"/>
                                 <buttonCell key="cell" type="push" title="Get All Arwtorks" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AAP-Rf-LYc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -757,7 +757,7 @@
                                 </connections>
                             </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wu-PK-AnS">
-                                <rect key="frame" x="20" y="103" width="340" height="133"/>
+                                <rect key="frame" x="20" y="168" width="440" height="265"/>
                                 <clipView key="contentView" misplaced="YES" id="BcI-X4-4xD">
                                     <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -769,8 +769,8 @@
                                             <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="artworkId" width="116" minWidth="40" maxWidth="1000" id="7B3-U8-l3B">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Artwork Index">
+                                                <tableColumn identifier="artworkId" width="40" minWidth="40" maxWidth="1000" id="7B3-U8-l3B">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="ID">
                                                         <font key="font" metaFont="system" size="15"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -783,7 +783,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Qke-1u-TTI">
-                                                            <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="40" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahC-ws-qy8">
@@ -808,7 +808,7 @@
                                                         </binding>
                                                     </connections>
                                                 </tableColumn>
-                                                <tableColumn identifier="artworkName" width="216" minWidth="40" maxWidth="1000" id="0Gw-Or-v5B">
+                                                <tableColumn identifier="artworkName" width="392" minWidth="40" maxWidth="1000" id="0Gw-Or-v5B">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Artwork Name">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -822,11 +822,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="Y2k-St-tFd">
-                                                            <rect key="frame" x="120" y="1" width="216" height="17"/>
+                                                            <rect key="frame" x="44" y="1" width="392" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fBN-1H-mmK">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Rdm-kF-5ZM">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -848,6 +848,9 @@
                                                     </connections>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <action selector="rowAnythingChangeSelected:" target="XfG-lQ-9wD" id="A8A-Oi-kli"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -865,6 +868,104 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LdT-F5-0bd">
+                                <rect key="frame" x="489" y="0.0" width="5" height="467"/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <form verticalHuggingPriority="750" fixedFrame="YES" mode="track" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bAy-DH-0cR" userLabel="Prints">
+                                <rect key="frame" x="547" y="10" width="187" height="90"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="137.02947154471545" height="22"/>
+                                <size key="intercellSpacing" width="1" height="8"/>
+                                <formCell key="prototype" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Field:" id="EUf-Ui-lRU">
+                                    <font key="font" metaFont="system"/>
+                                    <font key="titleFont" metaFont="system"/>
+                                </formCell>
+                                <cells>
+                                    <column>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Limited edition max" id="KD0-O8-Cd0">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" tag="1" title="Number sold" id="7Sn-5F-cul">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                    </column>
+                                </cells>
+                            </form>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="eET-pm-SO7">
+                                <rect key="frame" x="491" y="125" width="296" height="5"/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="62K-4w-nZq">
+                                <rect key="frame" x="498" y="422" width="238" height="32"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Original Artwork Details" id="wyF-ef-H3u">
+                                    <font key="font" size="16" name="Futura-Medium"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEE-b6-4Pp">
+                                <rect key="frame" x="498" y="108" width="40" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Prints" usesSingleLineMode="YES" id="XgV-cF-V9z">
+                                    <font key="font" size="16" name="Futura-Medium"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <form verticalHuggingPriority="750" fixedFrame="YES" mode="track" allowsEmptySelection="NO" autorecalculatesCellSize="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BLz-Kq-bMy" userLabel="Original">
+                                <rect key="frame" x="523" y="267" width="211" height="142"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                <size key="cellSize" width="139.23577235772359" height="22"/>
+                                <size key="intercellSpacing" width="1" height="8"/>
+                                <formCell key="prototype" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Field:" id="ma6-S1-M6E">
+                                    <font key="font" metaFont="system"/>
+                                    <font key="titleFont" metaFont="system"/>
+                                </formCell>
+                                <cells>
+                                    <column>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Name" id="h0K-jX-nwS">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" tag="1" title="Medium" id="wiR-nT-Xup">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Present Location" id="27w-Au-lNe">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Original date of sale" id="CPS-nN-etF">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                        <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Information" id="x9K-Fo-Qdm">
+                                            <font key="font" metaFont="system"/>
+                                            <font key="titleFont" metaFont="system"/>
+                                        </formCell>
+                                    </column>
+                                </cells>
+                            </form>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="njE-Th-jyQ">
+                                <rect key="frame" x="245" y="107" width="39" height="38"/>
+                                <buttonCell key="cell" type="round" bezelStyle="circular" imagePosition="above" alignment="left" borderStyle="border" toolTip="Carolyn's radio button" imageScaling="proportionallyDown" id="zkn-UD-MSb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="label"/>
+                                </buttonCell>
+                            </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7eH-v7-fox">
+                                <rect key="frame" x="312" y="113" width="61" height="18"/>
+                                <buttonCell key="cell" type="check" title="Check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8G8-Sf-Ily">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -872,6 +973,8 @@
                         <outlet property="artworksIdTableColumn" destination="7B3-U8-l3B" id="5tx-RO-5ly"/>
                         <outlet property="artworksNameTableColumn" destination="0Gw-Or-v5B" id="9SD-gm-qfb"/>
                         <outlet property="currentArtworkId" destination="ncj-UR-2zh" id="PG6-JW-tbN"/>
+                        <outlet property="detailsMedium" destination="wiR-nT-Xup" id="beA-yv-5C7"/>
+                        <outlet property="detailsName" destination="h0K-jX-nwS" id="F9A-mC-E8r"/>
                         <outlet property="lblStatus" destination="Nmh-th-zaW" id="7NR-fW-D3L"/>
                         <outlet property="stepArtworkId" destination="X9A-Qh-5S4" id="CrS-2Y-ci6"/>
                     </connections>
@@ -879,7 +982,7 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController id="EE9-na-ZH3"/>
             </objects>
-            <point key="canvasLocation" x="-168" y="714"/>
+            <point key="canvasLocation" x="-63.5" y="806.5"/>
         </scene>
     </scenes>
 </document>
