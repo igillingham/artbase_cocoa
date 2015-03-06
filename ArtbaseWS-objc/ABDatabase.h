@@ -15,6 +15,10 @@ extern NSString * const abApiNotifyArtworksReady;
 extern NSString * const abApiNotifyArtworkReady;
 extern NSString * const abApiNotifyArtworksJSONReady;
 extern NSString * const abApiNotifyArtworkJSONReady;
+extern NSString * const abApiNotifyMediumsReady;
+extern NSString * const abApiNotifyMediumReady;
+extern NSString * const abApiNotifyMediumsJSONReady;
+extern NSString * const abApiNotifyMediumJSONReady;
 
 //  Integrate NSTableViewDataSource protocol to allow populating TableView
 //  See: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/TableView/PopulatingCellTables/PopulatingCellTables.html
@@ -30,5 +34,7 @@ extern NSString * const abApiNotifyArtworkJSONReady;
 
 - (void)requestAllArtworks;
 - (void)requestArtworkWithId:(NSInteger) iId;
+- (void)requestAllMediums;
+- (void)requestMediumWithId:(NSInteger) iId;
 - (void)downloadFinished:(NSNotification *)notification;
 @end

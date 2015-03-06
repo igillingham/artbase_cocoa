@@ -47,4 +47,10 @@
 
 @property (weak) IBOutlet NSFormCell *detailsMedium;
 
+@property (weak) IBOutlet NSFormCell *detailsLocation;
+@property (weak) IBOutlet NSFormCell *detailsDateOfSale;
+@property (weak) IBOutlet NSFormCell *detailsInformation;
+@property (weak) IBOutlet NSFormCell *printsLimitedEdition;
+@property (weak) IBOutlet NSFormCell *printsNumberSold;
+
 @end

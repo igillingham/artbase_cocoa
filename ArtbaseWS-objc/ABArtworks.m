@@ -132,7 +132,7 @@
     }
 
 - (void)dataReady:(NSNotification *)notification
-{
+    {
     NSLog(@"ABArtworks:dataReady");
     // Clear any previous list entries
     //cast obj to NSDictionary
@@ -153,27 +153,25 @@
          object:self];
         
         }
-}
+    }
 
 - (void)artworkJSONReady:(NSNotification *)notification
-{
+    {
     NSLog(@"ABArtwork:artworkJSONReady");
     //cast obj to NSDictionary
     NSDictionary *result = (NSDictionary *)notification.object;
     
     if (result != nil)
         {
-        NSInteger uid = [[result objectForKey:@"id"] intValue];
-        NSString *name = [result objectForKey:@"name"];
-        NSInteger medium = [[result objectForKey:@"medium"] integerValue];
-        [self.artworkItem setIndex:uid];
-        [self.artworkItem setName:name];
-        [self.artworkItem setMedium:medium];
+        [self.artworkItem fromJSON:result];
+        
         [[NSNotificationCenter defaultCenter]
          postNotificationName:abApiNotifyArtworkReady
          object:self.artworkItem];
         
         }
-}
+    }
+
+
 
 @end

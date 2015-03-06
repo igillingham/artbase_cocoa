@@ -68,10 +68,16 @@
 
 - (void)updateArtworkItem:(NSNotification *)notification
     {
-    NSInteger medium;
     ArtworkEntity *aw = (ArtworkEntity *)[notification object];
-    medium = [aw medium];
-    [self.detailsMedium setIntegerValue:medium];
+    [self.detailsMedium setIntegerValue:[aw medium]];
+    [self.detailsLocation setIntegerValue:[aw presentLocation]];
+    if ([aw date_of_sale] != nil)
+        [self.detailsDateOfSale setStringValue:[aw date_of_sale]];
+    if ([aw information] != nil)
+        [self.detailsInformation setStringValue:[aw information]];
+    [self.detailsLocation setIntegerValue:[aw presentLocation]];
+    [self.printsLimitedEdition setIntegerValue:[aw limited_edition]];
+    [self.printsNumberSold setIntegerValue:[aw prints_sold]];
     [self reloadData];
     }
 
@@ -144,17 +150,12 @@
     request.timeoutInterval = 20.0;
     
     // Convert your data and set your request's HTTPBody property
-    //NSString *stringData = @"";
-    //NSData *requestBodyData = [stringData dataUsingEncoding:NSUTF8StringEncoding];
-    //request.HTTPBody = requestBodyData;
-    
     if (self.connection != nil)
         {
         [self.connection cancel];
         }
     
     // Create url connection and fire request
-    // NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self.apiClient];
     
     self.connection = conn;
@@ -179,8 +180,6 @@
                                                                      options:0
                                                                        error:NULL];
             NSLog(@"JSON dictionary: %@", greeting);
-            //self.greetingId.text = [[greeting objectForKey:@"id"] stringValue];
-            //self.greetingContent.text = [greeting objectForKey:@"content"];
             }
         }
     }
