@@ -36,27 +36,26 @@
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
     {
     NSInteger uiCount = (NSInteger)[_mediumsArray count];
-    NSLog(@"ABMediums numberOfRowsInTableView %lu", (unsigned long)uiCount);
     return uiCount;
     }
 
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
     {
     NSTableCellView *result;
-    NSLog(@"ABMediums viewForTableColumn");
+    //NSLog(@"ABMediums viewForTableColumn");
     if ([self.mediumsArray count] > row)
         {
         NSTableCellView *tableCellView = [tableView makeViewWithIdentifier:@"MediumTableView" owner:self];
         if ([[tableColumn identifier] isEqualToString:@"MediumId"])
             {
-            NSLog(@"tableColumn = MediumIdCol");
+            //NSLog(@"tableColumn = MediumIdCol");
             [[tableCellView textField] setObjectValue:@"Medium index"];
             result = [tableView makeViewWithIdentifier:@"MediumId" owner:self];
             result.textField.integerValue = [(MediumEntity *)[self.mediumsArray objectAtIndex:row] index];
             }
         else if ([[tableColumn identifier] isEqualToString:@"MediumName"])
             {
-            NSLog(@"tableColumn = MediumName");
+            //NSLog(@"tableColumn = MediumName");
             [[tableCellView textField] setObjectValue:@"Medium name"];
             result = [tableView makeViewWithIdentifier:@"MediumName" owner:self];
             result.textField.stringValue = [(MediumEntity *)[self.mediumsArray objectAtIndex:row] name];
@@ -69,7 +68,7 @@
     {
     id returnValue=nil;
     MediumEntity *awe = (MediumEntity *)[self.mediumsArray objectAtIndex:rowIndex];
-    NSLog(@"ABMediums: tableView.objectValueForTableColumn.row");
+    //NSLog(@"ABMediums: tableView.objectValueForTableColumn.row");
     if (awe != nil)
         {
         if ([[aTableColumn identifier] isEqualToString:@"MediumId"])
@@ -85,20 +84,20 @@
    forTableColumn:(NSTableColumn *)aTableColumn
               row:(NSInteger)rowIndex
     {
-    NSLog(@"ABMediums: tableView.setObjectValue.forTableColumn");
+    //NSLog(@"ABMediums: tableView.setObjectValue.forTableColumn");
     }
 
 - (void)tableView:(NSTableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
     {
-    NSLog(@"ABMediums: tableView.didSelectRowAtIndexPath");
+    //NSLog(@"ABMediums: tableView.didSelectRowAtIndexPath");
     }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
     {
     NSTableView *tbv = [aNotification object];
     NSInteger iRow = [tbv selectedRow];
-    NSLog(@"ABMediums:tableViewSelectionDidChange row %ld", iRow);
+    //NSLog(@"ABMediums:tableViewSelectionDidChange row %ld", iRow);
     }
 
 - (void)deleteMediumAtIndex:(UInt16)iIndex
@@ -120,6 +119,7 @@
             
             }
         }
+    [self.mediumsArray removeAllObjects];
     NSLog(@"ABMediums clear exiting");
     }
 
@@ -128,6 +128,21 @@
     MediumEntity *awe = [[MediumEntity alloc] initWithId:uid withName:name];
     [self.mediumsArray addObject:awe];
     //NSLog(@"ABMediums appendMediumWithId %@   %lu  count = %lu", awe, (unsigned long)uid, (unsigned long)[self.MediumsArray count]);
+    }
+
+- (void)updateMediumAtIndex:(UInt16)uid withName:(NSString *)name
+    {
+    MediumEntity *awe = [self getMediumAtIndex:uid];
+    if (awe != nil)
+        {
+        [awe setName:name];
+        }
+  
+    }
+
+- (void)addMedium:(NSString*)name
+    {
+    
     }
 
 - (MediumEntity *)getMediumAtIndex:(UInt16)iIndex

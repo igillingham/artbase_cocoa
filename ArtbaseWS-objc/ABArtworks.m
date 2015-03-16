@@ -114,6 +114,7 @@
             
             }
         }
+    [self.artworksArray removeAllObjects];
     NSLog(@"ABArtworks clear exiting");
     }
 

@@ -98,92 +98,11 @@
     [self.apiClient requestAllArtworks];
     }
 
-- (IBAction)btnTestGetAction:(id)sender
-    {
-    [self.apiClient requestArtworkWithId:[self.currentArtworkId integerValue]];
-    }
-
-- (IBAction)stepSelector:(id)sender
-    {
-    NSLog(@"stepSelector! %d", self.stepArtworkId.intValue);
-    [self.currentArtworkId setIntValue:self.stepArtworkId.intValue];
-
-    }
 
 - (IBAction)btnAddAction:(id)sender
     {
     NSLog(@"Add button pressed");
     }
-
-- (IBAction)btnTestWebReq:(id)sender
-    {
-    }
-
-- (IBAction)btnTestPostAction:(id)sender
-    {
-    NSLog(@"POST button pressed");
-    NSLog(@"buttonPressed: Setting up request");
-    //soStatus.text = @"Pressed!";
-    // Create the request.
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://abapi.iangillingham.net"]];
-    
-    // Specify that it will be a POST request
-    request.HTTPMethod = @"POST";
-    //initialize a post data
-    NSString *postParams = @"/aw/name/2";
-    NSString *postData = [[NSString alloc] initWithString:postParams];
-    //set request content type we MUST set this value.
-    
-    // This is how we set header fields
-    //[request setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    //[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
-    //set post data of request
-    [request setHTTPBody:[postData dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // If we want to consider posting JSON params at some stage
-    //NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:&encodeError];
-    
-    // Setting a timeout
-    request.timeoutInterval = 20.0;
-    
-    // Convert your data and set your request's HTTPBody property
-    if (self.connection != nil)
-        {
-        [self.connection cancel];
-        }
-    
-    // Create url connection and fire request
-    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self.apiClient];
-    
-    self.connection = conn;
-    
-    //start the connection
-    [conn start];
-    
-    if (conn!=nil)
-        {
-        NSString* myString;
-        myString = self.apiClient.getResponseString;
-        //[self.lblStatus] text
-        NSLog(@"buttonPressed: Request completed");
-        NSLog(@"%@", myString);
-        
-        NSMutableData *data = self.apiClient.getResponseData;
-        NSError *err = self.apiClient.getError;
-        
-        if (data.length > 0 && err == nil)
-            {
-            NSDictionary *greeting = [NSJSONSerialization JSONObjectWithData:data
-                                                                     options:0
-                                                                       error:NULL];
-            NSLog(@"JSON dictionary: %@", greeting);
-            }
-        }
-    }
-
 
 
 

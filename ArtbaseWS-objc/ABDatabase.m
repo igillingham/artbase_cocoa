@@ -18,6 +18,11 @@ NSString * const abApiNotifyArtworkReady = @"abApiNotifyArtworkReady";
 NSString * const abApiNotifyMediumsReady = @"abApiNotifyMediumsReady";
 NSString * const abApiNotifyMediumReady = @"abApiNotifyMediumReady";
 
+NSString * const abApiNotifyPrintsReady = @"abApiNotifyPrintsReady";
+NSString * const abApiNotifyPrintReady = @"abApiNotifyPrintReady";
+NSString * const abApiNotifyPrintsJSONReady = @"abApiNotifyPrintsJSONReady";
+NSString * const abApiNotifyPrintJSONReady = @"abApiNotifyPrintJSONReady";
+
 @implementation ArtbaseAPIClient
 
 - (id)init
@@ -165,7 +170,6 @@ NSString * const abApiNotifyMediumReady = @"abApiNotifyMediumReady";
 
 - (void)requestAllMediums
 {
-    NSLog(@"Get All Mediums button pressed");
     // Create the request.
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/mediums"]]];
     
@@ -189,6 +193,77 @@ NSString * const abApiNotifyMediumReady = @"abApiNotifyMediumReady";
     
 }
 
+- (void)updateMediumId:(NSInteger) iId withName:(NSString *)name
+{
+    NSLog(@"ABDatabase: updateMediumId: %ld withName: %@", iId, name);
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/medium/update/%ld",(long)iId]]];
+    
+    
+    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSDictionary* jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    [NSString stringWithFormat:@"%li", (long)iId],@"id",
+                                    name, @"medium",
+                                    nil];
+    NSError *error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
+    // Specify that it will be a PUT request
+    request.HTTPMethod = @"PUT";
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [request setHTTPBody:jsonData];
+    
+    // If we want to consider posting JSON params at some stage
+    //NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:&encodeError];
+    
+    // Setting a timeout
+    request.timeoutInterval = 20.0;
+    
+    // This is how we set header fields
+    //[request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    
+}
+
+- (void)addMediumWithName:(NSString*)name
+    {
+    NSLog(@"ABDatabase: addMediumId: withName: %@", name);
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/medium"]]];
+    
+    
+    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    NSDictionary* jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:name, @"medium", nil];
+    NSError *error;
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:jsonDictionary
+                                                       options:NSJSONWritingPrettyPrinted error:&error];
+    // Specify that it will be a POST request
+    request.HTTPMethod = @"POST";
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [request setHTTPBody:jsonData];
+    
+    // If we want to consider posting JSON params at some stage
+    //NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:&encodeError];
+    
+    // Setting a timeout
+    request.timeoutInterval = 20.0;
+    
+    // This is how we set header fields
+    //[request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    }
+
 - (void)requestMediumWithId:(NSInteger) iId
 {
     // Create the request.
@@ -211,9 +286,78 @@ NSString * const abApiNotifyMediumReady = @"abApiNotifyMediumReady";
     
 }
 
+- (void)deleteMediumWithId:(NSInteger) iId
+{
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/medium/%ld",(long)iId]]];
+    
+    // Specify that it will be a DELETE request
+    request.HTTPMethod = @"DELETE";
+    
+    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    // Setting a timeout
+    request.timeoutInterval = 20.0;
+    
+    // This is how we set header fields
+    [request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+}
+
+- (void)requestAllPrints
+{
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/prints"]]];
+    
+    // Specify that it will be a GET request
+    request.HTTPMethod = @"GET";
+    
+    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    // If we want to consider posting JSON params at some stage
+    //NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:&encodeError];
+    
+    // Setting a timeout
+    request.timeoutInterval = 20.0;
+    
+    // This is how we set header fields
+    [request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+}
+
+- (void)requestPrintWithId:(NSInteger) iId
+{
+    // Create the request.
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://abapi.iangillingham.net/print/%ld",(long)iId]]];
+    
+    // Specify that it will be a GET request
+    request.HTTPMethod = @"GET";
+    
+    [request setValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    // Setting a timeout
+    request.timeoutInterval = 20.0;
+    
+    // This is how we set header fields
+    [request setValue:@"text/html; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    // Create url connection and fire request
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+}
+
 - (void)downloadFinished:(NSNotification *)notification
 {
-    NSArray *datatypes = @[@"artwork", @"artworks", @"medium", @"mediums"];
+    NSArray *datatypes = @[@"artwork", @"artworks", @"medium", @"mediums", @"gallery", @"galleries", @"print", @"prints", @"customer", @"customers"];
     
     NSMutableData *requestedData = [[notification object] getResponseData];
     NSString *requestedDataString = [[notification object] getResponseString];
@@ -294,6 +438,40 @@ NSString * const abApiNotifyMediumReady = @"abApiNotifyMediumReady";
                              object:inner_result];
                             }
                         break;
+                    
+                    case 4: // Gallery
+                    break;
+                    
+                    case 5: // Galleries
+                    break;
+                    
+                    case 6: // Print
+                    inner_result = [results objectForKey:@"print"];
+                    if (inner_result != nil)
+                        {
+                        NSLog(@"ArtbaseAPIClient Found Print key");
+                        [[NSNotificationCenter defaultCenter]
+                         postNotificationName:abApiNotifyPrintJSONReady
+                         object:inner_result];
+                        }
+                    break;
+                    
+                    case 7: // Prints
+                    inner_result = [results objectForKey:@"prints"];
+                    if (inner_result != nil)
+                        {
+                        NSLog(@"ArtbaseAPIClient Found Prints key");
+                        [[NSNotificationCenter defaultCenter]
+                         postNotificationName:abApiNotifyPrintsJSONReady
+                         object:inner_result];
+                        }
+                    break;
+                    
+                    case 8: // Customer
+                    break;
+                    
+                    case 9: // Customers
+                    break;
                     
                 default:
                     break;

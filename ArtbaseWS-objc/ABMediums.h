@@ -17,6 +17,8 @@
 @property (strong,retain) NSMutableArray *mediumsArray;
 @property (strong,retain) MediumEntity *mediumItem;
 - (void)appendMediumWithId:(UInt16)uid withName:(NSString *)name;
+- (void)updateMediumAtIndex:(UInt16)uid withName:(NSString *)name;
+- (void)addMedium:(NSString*)name;
 - (MediumEntity *)getMediumAtIndex:(UInt16)iIndex;
 - (void)deleteMediumAtIndex:(UInt16)iIndex;
 - (void)clear;

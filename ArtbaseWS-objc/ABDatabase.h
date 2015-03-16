@@ -19,6 +19,10 @@ extern NSString * const abApiNotifyMediumsReady;
 extern NSString * const abApiNotifyMediumReady;
 extern NSString * const abApiNotifyMediumsJSONReady;
 extern NSString * const abApiNotifyMediumJSONReady;
+extern NSString * const abApiNotifyPrintsReady;
+extern NSString * const abApiNotifyPrintReady;
+extern NSString * const abApiNotifyPrintsJSONReady;
+extern NSString * const abApiNotifyPrintJSONReady;
 
 //  Integrate NSTableViewDataSource protocol to allow populating TableView
 //  See: https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/TableView/PopulatingCellTables/PopulatingCellTables.html
@@ -36,5 +40,10 @@ extern NSString * const abApiNotifyMediumJSONReady;
 - (void)requestArtworkWithId:(NSInteger) iId;
 - (void)requestAllMediums;
 - (void)requestMediumWithId:(NSInteger) iId;
+- (void)updateMediumId:(NSInteger) iId withName:(NSString *)name;
+- (void)addMediumWithName:(NSString*)name;
+- (void)deleteMediumWithId:(NSInteger) iId;
 - (void)downloadFinished:(NSNotification *)notification;
+- (void)requestAllPrints;
+- (void)requestPrintWithId:(NSInteger) iId;
 @end

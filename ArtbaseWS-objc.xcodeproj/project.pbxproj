@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0284521AB373A000A1190D /* PrintsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C0284501AB373A000A1190D /* PrintsViewController.m */; };
+		3C0284531AB373A000A1190D /* PrintsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C0284511AB373A000A1190D /* PrintsViewController.xib */; };
 		3C3065EB1AA66B3E00A0C8FE /* ABMediums.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3065EA1AA66B3E00A0C8FE /* ABMediums.m */; };
 		3C3065EF1AA6726800A0C8FE /* MediumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3065ED1AA6726800A0C8FE /* MediumViewController.m */; };
 		3C3065F01AA6726800A0C8FE /* MediumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C3065EE1AA6726800A0C8FE /* MediumViewController.xib */; };
@@ -23,6 +25,8 @@
 		3CCACD861A7E7BBE00D5ACFE /* ABDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCACD851A7E7BBE00D5ACFE /* ABDatabase.m */; };
 		3CCB1D361AA505D4008DAC2A /* MediumEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB1D351AA505D4008DAC2A /* MediumEntity.m */; };
 		3CCF6D7D1A7BF36F002FD898 /* TestButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CCF6D7C1A7BF36F002FD898 /* TestButtonController.m */; };
+		3CEBBD251AB4A4B400B2A92F /* PrintEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEBBD241AB4A4B400B2A92F /* PrintEntity.m */; };
+		3CF52F5B1AB5FF1B001244AD /* ABPrints.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CF52F5A1AB5FF1B001244AD /* ABPrints.m */; };
 		9BF5E220C75856ED41EC00A7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D25CB2CAF0CDC8939346489 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		299B75F35C4073FD1CFB0774 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3C02844F1AB373A000A1190D /* PrintsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintsViewController.h; sourceTree = "<group>"; };
+		3C0284501AB373A000A1190D /* PrintsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintsViewController.m; sourceTree = "<group>"; };
+		3C0284511AB373A000A1190D /* PrintsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrintsViewController.xib; sourceTree = "<group>"; };
 		3C3065E91AA66B3E00A0C8FE /* ABMediums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMediums.h; sourceTree = "<group>"; };
 		3C3065EA1AA66B3E00A0C8FE /* ABMediums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMediums.m; sourceTree = "<group>"; };
 		3C3065EC1AA6726800A0C8FE /* MediumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediumViewController.h; sourceTree = "<group>"; };
@@ -69,6 +76,10 @@
 		3CCB1D351AA505D4008DAC2A /* MediumEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediumEntity.m; sourceTree = "<group>"; };
 		3CCF6D7B1A7BF36F002FD898 /* TestButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestButtonController.h; sourceTree = "<group>"; };
 		3CCF6D7C1A7BF36F002FD898 /* TestButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestButtonController.m; sourceTree = "<group>"; };
+		3CEBBD231AB4A4B400B2A92F /* PrintEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintEntity.h; sourceTree = "<group>"; };
+		3CEBBD241AB4A4B400B2A92F /* PrintEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintEntity.m; sourceTree = "<group>"; };
+		3CF52F591AB5FF1B001244AD /* ABPrints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABPrints.h; sourceTree = "<group>"; };
+		3CF52F5A1AB5FF1B001244AD /* ABPrints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABPrints.m; sourceTree = "<group>"; };
 		6D25CB2CAF0CDC8939346489 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		85DE0062462933F3B4AE504D /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,11 +150,16 @@
 				3C8772F41A72A4B900A1EC91 /* AppDelegate.m */,
 				3C8772F81A72A4B900A1EC91 /* ViewController.h */,
 				3C3065EC1AA6726800A0C8FE /* MediumViewController.h */,
+				3C02844F1AB373A000A1190D /* PrintsViewController.h */,
+				3C0284501AB373A000A1190D /* PrintsViewController.m */,
+				3C0284511AB373A000A1190D /* PrintsViewController.xib */,
 				3C3065ED1AA6726800A0C8FE /* MediumViewController.m */,
 				3C3065EE1AA6726800A0C8FE /* MediumViewController.xib */,
 				3C8772F91A72A4B900A1EC91 /* ViewController.m */,
 				3C38F48C1A91067E00825D15 /* ABArtworks.h */,
 				3C3065E91AA66B3E00A0C8FE /* ABMediums.h */,
+				3CF52F591AB5FF1B001244AD /* ABPrints.h */,
+				3CF52F5A1AB5FF1B001244AD /* ABPrints.m */,
 				3C3065EA1AA66B3E00A0C8FE /* ABMediums.m */,
 				3C38F48D1A91067E00825D15 /* ABArtworks.m */,
 				3C8772FE1A72A4B900A1EC91 /* Images.xcassets */,
@@ -157,6 +173,8 @@
 				3C8773171A72C70F00A1EC91 /* ArtworkEntity.h */,
 				3C8772F11A72A4B900A1EC91 /* Supporting Files */,
 				3CCB1D341AA505D4008DAC2A /* MediumEntity.h */,
+				3CEBBD231AB4A4B400B2A92F /* PrintEntity.h */,
+				3CEBBD241AB4A4B400B2A92F /* PrintEntity.m */,
 				3CCB1D351AA505D4008DAC2A /* MediumEntity.m */,
 			);
 			path = "ArtbaseWS-objc";
@@ -278,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C0284531AB373A000A1190D /* PrintsViewController.xib in Resources */,
 				3C3065F01AA6726800A0C8FE /* MediumViewController.xib in Resources */,
 				3C8772FF1A72A4B900A1EC91 /* Images.xcassets in Resources */,
 				3C8773021A72A4B900A1EC91 /* Main.storyboard in Resources */,
@@ -332,10 +351,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CCF6D7D1A7BF36F002FD898 /* TestButtonController.m in Sources */,
+				3C0284521AB373A000A1190D /* PrintsViewController.m in Sources */,
 				3C5FD5E31A7AC88600210292 /* TableController.m in Sources */,
 				3C8772FD1A72A4B900A1EC91 /* ArtbaseWS_objc.xcdatamodeld in Sources */,
 				3CCB1D361AA505D4008DAC2A /* MediumEntity.m in Sources */,
 				3C8773191A72C70F00A1EC91 /* ArtworkEntity.m in Sources */,
+				3CEBBD251AB4A4B400B2A92F /* PrintEntity.m in Sources */,
+				3CF52F5B1AB5FF1B001244AD /* ABPrints.m in Sources */,
 				3C8772FA1A72A4B900A1EC91 /* ViewController.m in Sources */,
 				3C38F48E1A91067E00825D15 /* ABArtworks.m in Sources */,
 				3C3065EB1AA66B3E00A0C8FE /* ABMediums.m in Sources */,

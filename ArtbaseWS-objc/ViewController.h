@@ -19,7 +19,6 @@
 @property (weak) IBOutlet NSTableColumn *artworkId;
 @property (nonatomic,retain) IBOutlet NSTableView *artworkTableView;
 
-
 @property (weak) IBOutlet NSTextFieldCell *lblStatus;
 @property (retain, nonatomic) NSURLConnection *connection;
 
